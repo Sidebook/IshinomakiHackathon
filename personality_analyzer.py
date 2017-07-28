@@ -1,7 +1,13 @@
 import settings
 import requests
+import
 
-def analyze():
+def analyze(user_id):
+    pass
+
+def analyze_text(text):
+    requests.get()
+    pass
 
 def main():
     pass
