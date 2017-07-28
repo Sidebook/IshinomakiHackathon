@@ -1,5 +1,7 @@
 import settings
+import requests
 
+def analyze():
 
 def main():
     pass
