@@ -13,29 +13,33 @@
 </head>
 <!--<body style = "background:linear-gradient(90deg,#92B2FF 0%,#92B2FF 50%,#FF9899 50%,#FF9899 100%)">
 	-->
-<div class="container">
-    <img src="css/images/cupid.png" width=2 00 height=1 00 alt="Cupid_image">
+<div style="text-align:center">
+    <img width=300 height=100 vspace=60 src={{ url_for( 'static', filename='css/images/cupid.png' )}}/>
 </div>
-<div class="form" style="margin:10em">
-    <div class="container-fluid">
-        <div class="row">
-            <div style="display:-webkit-flex;display:flex; -webkit-justify-content: center; justify-content: center; -webkit-align-items: center">
-                <form action="/post" method="post" class="form-inline">
-                    <div class="col-xs-4">
-                        <h2>♂</h2>
+
+<div class="container-fluid">
+    <div class="row">
+        <div style="display:-webkit-flex;display:flex; -webkit-justify-content: center; justify-content: center; -webkit-align-items: center">
+            <form action="/post" method="post" class="form-inline">
+                <div class="col-xs-4">
+                    <h2>♂</h2>
+                    <span>
                         <label for="acount">＠</label>
-                        <input type="text" class="form-control" id="name" name="id_man" placeholder="example" />
-                    </div>
-                    <div class="col-xs-4">
-                        <button type="submit" class="btn btn-default" style="border:none;margin:auto;size:80%" name="btn">
+                        <input type="text" class="form-control" id="name" name="id_man" size=30 placeholder="男性のIDを入力してください" />
+					</span>
+                </div>
+                <div class="col-xs-4">
+                    <button type="submit" class="btn btn-default" style="border:none;margin:auto;size:80%" name="btn">
 									<img width = 100 height = 100 src = {{
 									url_for('static', filename = 'css/images/heart2.png')
 									}}/> 
 							</div>
 							<div class = "col-xs-4">
 								<h2>♀</h2>
+								<span>
 										<label for = "acount">＠</label>
-										<input type = "text" class = "form-control" id  = "name" name = "id_woman" placeholder = "example"/>
+										<input type = "text" class = "form-control" id  = "name" name = "id_woman" size=30 placeholder = "女性のIDを入力してください"/>
+								</span>
 							</div>
 						</form>
 					</div>
