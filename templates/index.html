@@ -1,11 +1,6 @@
-<html>
+{% extends "layout.html" %}
+{% block content %}
 
-<head>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel="stylesheet" href="../static/css/cupid.css">
-</head>
-<!--<body style = "background:linear-gradient(90deg,#92B2FF 0%,#92B2FF 50%,#FF9899 50%,#FF9899 100%)">
-	-->
 <div style="text-align:center">
     <img width=300 height=100 vspace=60 src={{ url_for( 'static', filename='css/images/cupid.png' )}}/>
 </div>
@@ -49,6 +44,7 @@
 			</div>
 		</form>
 	</div>
+
 		<!--
 		</div>
 		-->
@@ -107,7 +103,7 @@
 					</table>
 				</div>
 				<h2>価値</h2>
-				<p>ある人が、重要とするもの</p>
+				<p>個人が重要とするもの</p>
 				<div class = "col-xs-12">
 					<table class = "table">
 						<tbody>
@@ -132,8 +128,40 @@
 						</tbody>
 					</table>
 				</div>
+			</div>
 
-				<h2>
+			<h2>各項目の説明</h2>
+			<div class="col-md-6">
+				<h3>個性</h3>
+				<p></p>
+				<dl class="dl-horizontal">
+					<dt>知的好奇心</dt>
+						<dd>用語Ａの説明。</dd>
+					<dt>誠実性</dt>
+						<dd>用語Ｂの説明１。</dd>
+					<dt>外向性</dt>
+						<dd>用語Ｃの説明。</dd>
+					<dt>協調性</dt>
+						<dd>用語Ｂの説明２。</dd>
+					<dt>感情起伏</dt>
+						<dd>用語Ｂの説明２。</dd>
+				</dl>
+			</div>
+			<div class="col-md-6">
+				<h3>価値</h3>
+				<p></p>
+				<dl class="dl-horizontal">
+					<dt>自己増進</dt>
+						<dd></dd>
+					<dt>自己超越</dt>
+						<dd></dd>
+					<dt>現状維持</dt>
+						<dd></dd>
+					<dt>変化許容性</dt>
+						<dd></dd>
+					<dt>快楽主義</dt>
+						<dd></dd>
+				</dl>
 			</div>
 			{% endif %}
 
@@ -141,3 +169,5 @@
 	</div>
 	</body>
 </html>
+
+{% endblock %}
