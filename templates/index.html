@@ -68,14 +68,25 @@
 
 			{% if profiled %}
 			<div class = "row" style="position:relative; bottom:100px">
-				<h2>個性</h2>
 				<div class = "col-xs-12">
 					<table class = "table">
 						<thead>
 							<tr>
-								<th><h2>@{{ user_id_man }}</h2></th>
-								<th></th>
-								<th><h2>@{{ user_id_woman }}</h2></th>
+								<th>
+									<div class="text-center">
+									<h2 style="font-weight:bold">@{{ user_id_man }}</h2>
+									</div>
+								</th>
+								<th>
+									<h1 class="text-center"><span class="label label-default" style="">
+									個性
+									</span></h1>
+								</th>
+								<th>
+									<div class="text-center">
+									<h2 style="font-weight:bold">@{{ user_id_woman }}</h2>
+									</div>
+								</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -101,9 +112,17 @@
 						</tbody>
 					</table>
 				</div>
-				<h2>価値</h2>
 				<div class = "col-xs-12">
 					<table class = "table">
+						<thead>
+							<th></th>
+							<th>
+								<h1 class="text-center"><span class="label label-default" style="">
+									価値
+								</span></h1>
+							</th>
+							<th></th>
+						</thead>
 						<tbody>
 							{% for i in range(values_man|length) %}
 								<tr>
@@ -114,6 +133,9 @@
 										</div>
 									</td>
 									<td class="col-xs-4">
+										<div class="text-center">
+											<h3 style="font-weight:bold">{{i + 1}}位</h3>
+										</div>
 									</td>
 									<td class="col-xs-4">
 										<div class="text-center">
@@ -127,39 +149,44 @@
 					</table>
 				</div>
 			</div>
-
-			<h2><span class="label label-default">各項目の説明</span></h2>
-			<div class="col-md-6">
-				<h3>個性</h3>
-				<p>その人の性格を表す５大要素</p>
-				<dl class="dl-horizontal">
-					<dt>知的好奇心</dt>
-						<dd>落ち着きがあり，美に敏感で新しいことを試そうとするタイプ</dd>
-					<dt>誠実性</dt>
-						<dd>自己統制をし、誠実、あるいは外部の期待や評価に応えようとするタイプ</dd>
-					<dt>外向性</dt>
-						<dd>よりエネルギッシュで，社交的なタイプ</dd>
-					<dt>協調性</dt>
-						<dd>他人とうまくやっていくことを重要視するタイプ</dd>
-					<dt>感情起伏</dt>
-						<dd>感情の幅に大きな動きがあるタイプ</dd>
-				</dl>
-			</div>
-			<div class="col-md-6">
-				<h3>価値</h3>
-				<p>意思決定を行う時に影響を及ぼす動機付けとなる要因</p>
-				<dl class="dl-horizontal">
-					<dt>自己増進</dt>
-						<dd>社会的な基準に基づく個人的な成功</dd>
-					<dt>自己超越</dt>
-						<dd>身の回りの人をより幸せにしようとする</dd>
-					<dt>現状維持</dt>
-						<dd>伝統を重んじる保守的な姿勢</dd>
-					<dt>変化許容性</dt>
-						<dd>日常生活において興奮や新規性を追い求める</dd>
-					<dt>快楽主義</dt>
-						<dd>自分自身の幸福や満足感</dd>
-				</dl>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h1>各項目の説明</h1>
+				</div>
+				<div class="panel-body">
+					<div class="col-md-6">
+					<h3 class="text-center" style="font-weight:bold">個性</h3>
+						<p class="text-center">その人の性格を表す５大要素</p>
+						<dl class="dl-horizontal">
+							<dt>知的好奇心</dt>
+								<dd>落ち着きがあり，美に敏感で新しいことを試そうとするタイプ</dd>
+							<dt>誠実性</dt>
+								<dd>自己統制をし、誠実、あるいは外部の期待や評価に応えようとするタイプ</dd>
+							<dt>外向性</dt>
+								<dd>よりエネルギッシュで，社交的なタイプ</dd>
+							<dt>協調性</dt>
+								<dd>他人とうまくやっていくことを重要視するタイプ</dd>
+							<dt>感情起伏</dt>
+								<dd>感情の幅に大きな動きがあるタイプ</dd>
+						</dl>
+					</div>
+					<div class="col-md-6">
+						<h3 class="text-center" style="font-weight:bold">価値</h3>
+						<p class="text-center">意思決定を行う時に影響を及ぼす動機付けとなる要因</p>
+						<dl class="dl-horizontal">
+							<dt>自己増進</dt>
+								<dd>社会的な基準に基づく個人的な成功</dd>
+							<dt>自己超越</dt>
+								<dd>身の回りの人をより幸せにしようとする</dd>
+							<dt>現状維持</dt>
+								<dd>伝統を重んじる保守的な姿勢</dd>
+							<dt>変化許容性</dt>
+								<dd>日常生活において興奮や新規性を追い求める</dd>
+							<dt>快楽主義</dt>
+								<dd>自分自身の幸福や満足感</dd>
+						</dl>
+					</div>
+				</div>
 			</div>
 			{% endif %}
 
