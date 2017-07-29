@@ -89,8 +89,6 @@ def post():
             values_woman = sorted(profile_woman.values.items(), key=lambda x:x[1], reverse=True)
             values_man = [(v[0], '{0:.1f} %'.format(v[1] * 100)) for v in values_man]
             values_woman = [(v[0], '{0:.1f} %'.format(v[1] * 100)) for v in values_woman]
-            print(values_man)
-            print(values_woman)
 
             return render_template(
                 HOME_HTML,
