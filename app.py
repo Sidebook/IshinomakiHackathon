@@ -9,7 +9,7 @@ import profiler
 
 app = Flask(__name__)
 
-HOME_HTML = 'ishinomakihackathon.html'
+HOME_HTML = 'index.html'
 
 def picked_up():
     messages = [
