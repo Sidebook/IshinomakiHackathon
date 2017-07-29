@@ -66,7 +66,8 @@ def post():
             profile_man = profiler.from_user_id(man)
             processing_id = woman
             profile_woman = profiler.from_user_id(woman)
-            compatibility = '{0:.1f} %'.format(profile_man.compare(profile_woman) * 100)
+            compatibility_num = profile_man.compare(profile_woman) * 100
+            compatibility = '{0:.1f} %'.format(compatibility_num)
             profiled = True
             error = None
         except UserNotFoundException as e:
@@ -90,6 +91,29 @@ def post():
             values_man = [(v[0], '{0:.1f} %'.format(v[1] * 100)) for v in values_man]
             values_woman = [(v[0], '{0:.1f} %'.format(v[1] * 100)) for v in values_woman]
 
+            compatible_level = 0
+            comment = ''
+            if compatibility_num >= 80:
+                if compatibility_num >= 90:
+                    comment = '相性抜群！待ってる時間が勿体無いですよ！今すぐ連絡しましょう！'
+                else:
+                    comment = 'とっても相性のいい二人、デートに誘ってみるといいかも？'
+                compatible_level = 2
+            elif compatibility_num >= 30:
+                if compatibility_num >=60:
+                    comment = 'なかなかの相性。これからの行動次第です！'
+                elif compatibility_num >=45:
+                    comment = 'あなたとは少し違った性格の持ち主のようです。むしろうまくいくかも？'
+                else:
+                    comment = 'あなたとはかなり異なった性格の持ち主のようです。'
+                compatible_level = 1
+            else:
+                if compatibility_num >= 10:
+                    comment = '正反対の性格の持ち主、お互いの性格を補えるカップルになれるかもしれません。'
+                else:
+                    comment = '全くの正反対の性格の持ち主です。ここまでくると逆にうまくいくかもしれません！'
+                compatible_level = 0
+
             return render_template(
                 HOME_HTML,
                 profiled=True,
@@ -98,7 +122,9 @@ def post():
                 values_woman=values_woman,
                 compatibility=compatibility,
                 user_id_man=man,
-                user_id_woman=woman
+                user_id_woman=woman,
+                comment=comment,
+                compatible_level=compatible_level
             )
         else:
             return render_template(HOME_HTML,
