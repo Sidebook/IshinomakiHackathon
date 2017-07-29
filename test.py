@@ -7,9 +7,15 @@ app = Flask(__name__)
 def index():
     return render_template('index.html',
             profiled=True,
-            personality=[{'name':'知的好奇心', 'man':'82.2 %', 'woman':'43.2%'}],
-            values_man=[('快楽主義','43.2%')],
-            values_woman=[('快楽主義','43.2%')],
+            personality=[
+                {'name':'知的好奇心', 'man':'82.2 %', 'woman':'43.2%'},
+                {'name':'誠実性', 'man':'82.2 %', 'woman':'43.2%'},
+                {'name':'外向性', 'man':'82.2 %', 'woman':'43.2%'},
+                {'name':'協調性', 'man':'82.2 %', 'woman':'43.2%'},
+                {'name':'感情起伏', 'man':'82.2 %', 'woman':'43.2%'}
+                ],
+            values_man=[('快楽主義','43.2%'), ('自己超越','43.2%'), ('現状維持','43.2%'), ('変化許容性','43.2%'), ('自己増進','43.2%')],
+            values_woman=[('快楽主義','43.2%'), ('自己超越','43.2%'), ('現状維持','43.2%'), ('変化許容性','43.2%'), ('自己増進','43.2%')],
             compatibility='99.9%',
             user_id_man='id_of_man',
             user_id_woman='id_of_woman',
