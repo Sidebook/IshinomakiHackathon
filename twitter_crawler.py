@@ -28,15 +28,17 @@ def crawl(user_id, minlength=20000):
     if req.status_code == 200:
         for i in range(16):
             tweets = json.loads(req.text)
-            print('get {} tweets of @{}'.format(len(tweets), user_id))
+            # print('get {} tweets of @{}'.format(len(tweets), user_id))
             for tweet in tweets:
                 result += tweet['text'] + "\n"
+            if len(tweets) == 0:
+                return result
             ID = tweets[-1]['id']
-            print(ID)
+            # print(ID)
             params['max_id'] = ID - 1
             req = twitter.get(url, params = params)
             if len(result) > minlength :
-                print(len(result))
+                # print(len(result))
                 return result
             time.sleep(1)
         return result
@@ -67,9 +69,9 @@ def main():
         except UnauthorizedException as e:
             print('\033[031m401 this channel is private.\033[0m')
             success = False
-        except Exception as e:
-            print('\033[031msomething goes wrong: {}\033[0m'.format(e))
-            success = False
+        #except Exception as e:
+        #    print('\033[031msomething goes wrong: {}\033[0m'.format(e))
+        #    success = False
         
 if __name__ == '__main__':
     main()
