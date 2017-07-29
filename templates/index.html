@@ -17,51 +17,97 @@
     <img width=300 height=100 vspace=60 src={{ url_for( 'static', filename='css/images/cupid.png' )}}/>
 </div>
 
-<div class="container-fluid">
+<div class="container">
     <div class="row">
+        {% if error %}
+        <div class="alert alert-danger" role="alert">
+            エラー: {{ error_message }}
+        </div>
+        {% endif %}
+        <!--
         <div style="display:-webkit-flex;display:flex; -webkit-justify-content: center; justify-content: center; -webkit-align-items: center">
-            <form action="/post" method="post" class="form-inline">
-                <div class="col-xs-4">
-                    <h2>♂</h2>
-                    <span>
-                        <label for="acount">＠</label>
-                        <input type="text" class="form-control" id="name" name="id_man" size=30 placeholder="男性のIDを入力してください" />
-					</span>
-                </div>
-                <div class="col-xs-4">
+			-->
+        <form action="/post" method="post" class="form-inline">
+            <div class="col-xs-5">
+                <label for="acount"><h3>＠</h3></label>
+                <input type="text" class="form-control input-lg" id="name" name="id_man" placeholder="男性の TwitterID" {% if user_id_man %} value={{user_id_man}} {% endif%}/>
+            </div>
+            <div class="col-xs-2">
+                <div class="container">
                     <button type="submit" class="btn btn-default" style="border:none;margin:auto;size:80%" name="btn">
 									<img width = 100 height = 100 src = {{
 									url_for('static', filename = 'css/images/heart2.png')
 									}}/> 
-							</div>
-							<div class = "col-xs-4">
-								<h2>♀</h2>
-								<span>
-										<label for = "acount">＠</label>
-										<input type = "text" class = "form-control" id  = "name" name = "id_woman" size=30 placeholder = "女性のIDを入力してください"/>
-								</span>
-							</div>
-						</form>
 					</div>
+				</div>
+				<div class = "col-xs-5">
+					<label for = "acount"><h3>＠</h3></label>
+					<input type = "text" class = "form-control input-lg" id  = "name" name = "id_woman" placeholder = "女性の TwitterID" {% if user_id_woman %} value={{user_id_woman}} {% endif%}/>
+				</div>
+				</form>
 			</div>
-
+		<!--
+		</div>
+		-->
+			
 			{% if profiled %}
 			<div class = "row">
+				<p>あなたたちの相性は...</p>
+				<h1 class="display-1">{{ compatibility }}</h1>
+
+				<h2>個性</h2>
 				<div class = "col-xs-12">
 					<table class = "table">
 						<thead>
 							<tr>
-								<th>@sidebook37</th>
+								<th><h2>@{{ user_id_man }}</h2></th>
 								<th></th>
-								<th>@renho_sha</th>
+								<th><h2>@{{ user_id_woman }}</h2></th>
 							</tr>
 						</thead>
 						<tbody>
-							{% for  p in profile%}
+							{% for  p in personality%}
 								<tr>
-									<th>{{ p.man }}</th>
-									<th>{{ p.name }}</th>
-									<th>{{ p.woman }}</th>
+									<td class="col-xs-4">
+										<div class="text-center">
+											<h3>{{ p.man }}</h3>
+										</div>
+									</td>
+									<th class="col-xs-4">
+										<div class="text-center">
+											<h3>{{ p.name }}</h3>
+										</div>
+									</th>
+									<td class="col-xs-4">
+										<div class="text-center">
+											<h3>{{ p.woman }}</h3>
+										</div>
+									</td>
+								</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
+				<h2>価値</h2>
+				<div class = "col-xs-12">
+					<table class = "table">
+						<tbody>
+							{% for i in range(values_man|length) %}
+								<tr>
+									<td class="col-xs-4">
+										<div class="text-center">
+											<h3>{{ values_man[i][0] }}</h3>
+											<p>{{ values_man[i][1] }}</p>
+										</div>
+									</td>
+									<td class="col-xs-4">
+									</td>
+									<td class="col-xs-4">
+										<div class="text-center">
+											<h3>{{ values_woman[i][0] }}</h3>
+											<p>{{ values_woman[i][1] }}</p>
+										</div>
+									</td>
 								</tr>
 							{% endfor %}
 						</tbody>

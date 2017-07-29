@@ -66,7 +66,7 @@ def post():
             profile_man = profiler.from_user_id(man)
             processing_id = woman
             profile_woman = profiler.from_user_id(woman)
-            compatibility = str(profile_man.compare(profile_woman) * 100) + ' %'
+            compatibility = '{0:.1f} %'.format(profile_man.compare(profile_woman) * 100)
             profiled = True
             error = None
         except UserNotFoundException as e:
@@ -87,6 +87,8 @@ def post():
             
             values_man = sorted(profile_man.values.items(), key=lambda x:x[1], reverse=True)
             values_woman = sorted(profile_woman.values.items(), key=lambda x:x[1], reverse=True)
+            values_man = [(v[0], '{0:.1f} %'.format(v[1] * 100)) for v in values_man]
+            values_woman = [(v[0], '{0:.1f} %'.format(v[1] * 100)) for v in values_woman]
             print(values_man)
             print(values_woman)
 
@@ -96,6 +98,7 @@ def post():
                 personality=personality,
                 values_man=values_man,
                 values_woman=values_woman,
+                compatibility=compatibility,
                 user_id_man=man,
                 user_id_woman=woman
             )
