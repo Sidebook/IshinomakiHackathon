@@ -20,17 +20,23 @@ class Profile():
     def __init__(
         self,
         user_id=None,
-        personality=None):
+        personality=None,
+        values=None):
         
         self.user_id = user_id
         self.personality = personality
+        self.values = values
     
     def __str__(self):
         s = 'user id: {}'.format(
             self.user_id,
         )
+        s += '\n個性:'
         for k, v in self.personality.items():
-            s += '\n{}: {}'.format(k, v)
+            s += '\n  {}: {}'.format(k, v)
+        s += '\n価値観:'
+        for k, v in self.values.items():
+            s += '\n  {}: {}'.format(k, v)
 
         return s
 
@@ -55,7 +61,7 @@ class Profile():
 
         return cos
         """
-
+        """
         n = len(self.personality)
         delta = 0
         for k, self_v in self.personality.items():
@@ -65,8 +71,18 @@ class Profile():
             another_v = another.personality[k]
             delta += abs(self_v - another_v)
         delta /= n
+        """
+        maxdelta = 0
+        for k, self_v in self.personality.items():
+            if k not in another.personality:
+                raise Exception()
+                return 0
+            another_v = another.personality[k]
 
-        return 1 - delta
+            delta = abs(self_v - another_v)
+            if maxdelta < delta:
+                maxdelta = delta
+        return 1 - maxdelta
     
 def from_text(text):
     profile_json = personality_insights.profile(
@@ -100,13 +116,42 @@ def from_text(text):
         elif (trait_id == 'big5_neuroticism'):
             neuroticism = p['percentile']
 
+    values = profile_json['values']
+
+    conservation = 0
+    openness_to_change = 0
+    hedonism = 0
+    self_enhancement = 0
+    self_transcendence = 0
+
+    for v in values:
+        trait_id = v['trait_id']
+        if trait_id == 'value_conservation':
+            conservation = v['percentile']
+        if trait_id == 'value_openness_to_change':
+            openness_to_change = v['percentile']
+        if trait_id == 'value_hedonism':
+            hedonism = v['percentile']
+        if trait_id == 'value_self_enhancement':
+            self_enhancement = v['percentile']
+        if trait_id == 'value_self_transcendence':
+            self_transcendence = v['percentile']
+    
+
     profile = Profile(
         personality={
-            '知的好奇心':openness,
-            '誠実性':conscientiousness,
-            '外向性':extraversion,
-            '協調性':agreeableness,
-            '感情起伏':neuroticism
+            '知的好奇心': openness,
+            '誠実性': conscientiousness,
+            '外向性': extraversion,
+            '協調性': agreeableness,
+            '感情起伏': neuroticism
+        },
+        values={
+            '現状維持': conservation,
+            '変化許容性': openness_to_change,
+            '快楽主義': hedonism,
+            '自己増進': self_enhancement,
+            '自己超越': self_transcendence
         }
     )
 
