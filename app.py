@@ -1,5 +1,7 @@
 from argparse import ArgumentParser
 from flask import Flask, render_template, request, redirect, url_for
+
+from exceptions import UserNotFoundException, UnauthorizedException, InsufficientTweetsError
 import numpy as np
 import settings
 import time
@@ -23,11 +25,26 @@ def index():
 @app.route('/post',methods=['GET','POST'])
 def post():
     if request.method =="POST":
-        name = request.form['name']
-        profiler.from_user_id()
-        return render_template('index.html',name=name,title=settings.TITLE)
+        man = request.form['id_man']
+        #print(man)
+        woman = request.form['id_woman']
+        #print(woman)
+
+        compatibility = ''
+        try:
+            profile_man = profiler.from_user_id(man)
+            profile_woman = profiler.from_user_id(woman)
+            compatibility = str(profile_man.compare(profile_woman) * 100) + ' %'
+        except UserNotFoundException as e:
+            compatibility = 'ユーザーが見つかりません'
+        except UnauthorizedException as e:
+            compatibility = '非公開アカウントです'
+        except InsufficientTweetsError as e:
+            compatibility = 'ツイートが少なすぎます'
+
+        return render_template('index.html',name=compatibility,title=settings.TITLE)
     else:
-        return redirect(url_for('index'))
+        return redirect(url_for('ishinomakihackathon.html'))
 
 if __name__ == "__main__":
     arg_parser = ArgumentParser(
