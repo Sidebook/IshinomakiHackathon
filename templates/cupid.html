@@ -1,0 +1,31 @@
+{% extends "layout.html" %} {% block content %}
+<!-- Form
+  ================================================== -->
+<div class="form">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-4 center-block">
+                <p class="lead">
+                    男性のTwitter ID
+                </p>
+                <form action="/post" method="post" class="form-inline">
+                    <label for="name">@</label>
+                    <input type="text" class="form-control" id="id_man" name="id_man" placeholder="男性">
+                </form>
+            </div>
+            <div class="col-xs-4 center-block">
+                <image border="0" src={{ url_for('static', filename = 'css/images/heart2.png') }} alt="ハートマーク">
+            </div>
+            <div class="col-xs-4">
+                <p class="lead">
+                    女性のTwitter ID
+                </p>
+                <form action="/post" method="post" class="form-inline">
+                    <label for="name">@</label>
+                    <input type="text" class="form-control" id="id_man" name="id_man" placeholder="女性">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
