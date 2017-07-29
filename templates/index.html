@@ -30,7 +30,7 @@
         <div style="display:-webkit-flex;display:flex; -webkit-justify-content: center; justify-content: center; -webkit-align-items: center">
 			-->
         <form action="/post" method="post">
-			<div style="margin:200px 0 30px 0">
+			<div {% if not profiled %} style="margin:200px 0 30px 0" {% endif %}>
 				<div class="col-xs-5">
 					<div class="input-group">
 						<span class="input-group-addon input-lg">@</span>
@@ -53,8 +53,17 @@
 		</div>
 		-->
 			{% if profiled %}
+			<h1 style="text-align:center">{{ comment }}</h1>
 			<div style="text-align:center">
-				<img src={{ url_for('static', filename='css/images/heart2.png') }} width="500px" height="500px">
+				<img src=
+				{% if compatible_level|int() == 2 %}
+					{{ url_for('static', filename='css/images/heart2.png') }}
+				{% elif compatible_level|int() == 1 %}
+					{{ url_for('static', filename='css/images/yellow_heart.png') }}
+				{% else %}
+					{{ url_for('static', filename='css/images/gray_heart.png') }}
+				{% endif %}
+				width="600px" height="500px">
 				<p class="text-center col-xs-12" style="font-size:800%; font-weight:bold; color:white; position:relative; bottom:350px; color">
 						{{ compatibility }}
 				</p>

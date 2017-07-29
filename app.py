@@ -11,18 +11,9 @@ app = Flask(__name__)
 
 HOME_HTML = 'index.html'
 
-def picked_up():
-    messages = [
-        "こんにちは，あなたの名前を入力してください",
-        "やあ！お名前はなんですか？",
-        "あなたの名前を教えてね"
-    ]
-    return np.random.choice(messages)
-
 @app.route('/', methods=['GET'])
 def index():
-    message = picked_up()
-    return render_template(HOME_HTML, message=message,title=settings.TITLE)
+    return render_template(HOME_HTML)
 
 @app.route('/post',methods=['GET','POST'])
 def post():
