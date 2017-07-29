@@ -1,23 +1,18 @@
 <html>
 	<head>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-		<link rel="stylesheet" href="../static/css/cupid.css">
-
 		<script>
-			function cntBtn(){
+			function cntBtn(){	
 				document.btn.elements[0].disabled=true;
-				alert('ボタンが押されました!');
 			}
 		</script>
 	</head>
-	<!--<body style = "background:linear-gradient(90deg,#92B2FF 0%,#92B2FF 50%,#FF9899 50%,#FF9899 100%)">
-	-->
-	<div class = "container">
-		<h1 class = "display-1">Cupid</h1>
-	</div>
+	<body style = "background:linear-gradient(90deg,blue 0%,blue 50%,red 50%,red 100%)">
+	<h1>Cupid</h1>
 	<div class = "form" style = "margin:10em" >
-		<div class = "container-fluid">
+		<div class = "container">
 			<div class = "row">
+				<div class = "col-xs-12">
 					<div style = "display:-webkit-flex;display:flex; -webkit-justify-content: center; justify-content: center; -webkit-align-items: center">
 						<form action = "/post" method = "post" class = "form-inline">
 							<div class = "col-xs-4">
@@ -26,10 +21,7 @@
 								<input type = "text" class = "form-control" id  = "name"  name = "id_man" placeholder = "example"/>
 							</div>
 							<div class = "col-xs-4">
-								<button type = "submit" class = "btn btn-default" style = "border:none;margin:auto;size:80%" name = "btn" onclick="this.disabled = true;">
-									<img width = 100 height = 100 src = {{
-									url_for('static', filename = 'css/images/heart2.png')
-									}}/> 
+								<button type = "submit" class = "btn btn-default" name = "btn" style = "border:none;margin:auto;size:80%" onclick="cntBtn"> <img src = "heart.png"/> 
 							</div>
 							<div class = "col-xs-4">
 								<h2>♀</h2>
@@ -38,33 +30,8 @@
 							</div>
 						</form>
 					</div>
-			</div>
-
-			{% if profiled %}
-			<div class = "row">
-				<div class = "col-xs-12">
-					<table class = "table">
-						<thead>
-							<tr>
-								<th>@sidebook37</th>
-								<th></th>
-								<th>@renho_sha</th>
-							</tr>
-						</thead>
-						<tbody>
-							{% for  p in profile%}
-								<tr>
-									<th>{{ p.man }}</th>
-									<th>{{ p.name }}</th>
-									<th>{{ p.woman }}</th>
-								</tr>
-							{% endfor %}
-						</tbody>
-					</table>
 				</div>
 			</div>
-			{% endif %}
-
 		</div>
 	</div>
 	</body>

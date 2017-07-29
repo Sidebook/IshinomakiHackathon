@@ -1,0 +1,6 @@
+.table > tbody > tr > th,
+.table > tfoot > tr > th,
+.table > thead > tr > th {
+  vertical-align: middle;
+  text-align: center;
+}
