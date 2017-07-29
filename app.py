@@ -18,7 +18,7 @@ def picked_up():
 @app.route('/', methods=['GET'])
 def index():
     message = picked_up()
-    return render_template("index.html",message=message,title=settings.TITLE)
+    return render_template("ishinomakihackathon.html",message=message,title=settings.TITLE)
 
 @app.route('/post',methods=['GET','POST'])
 def post():
