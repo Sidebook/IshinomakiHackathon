@@ -29,9 +29,11 @@
 			-->
         <form action="/post" method="post" class="form-inline">
             <div class="col-xs-5">
-                <label for="acount"><h3>＠</h3></label>
-                <input type="text" class="form-control input-lg" id="name" name="id_man" placeholder="男性の TwitterID" {% if user_id_man %} value={{user_id_man}} {% endif%}/>
-            </div>
+				<div class="input-group">
+                	<span class="input-group-addon input-lg">@</span>
+                	<input type="text" class="form-control input-lg" id="name" name="id_man" placeholder="男性の TwitterID" {% if user_id_man %} value={{user_id_man}} {% endif%}/>
+				</div>
+			</div>
             <div class="col-xs-2">
                 <div class="container">
                     <button type="submit" class="btn btn-default" style="border:none;margin:auto;size:80%" name="btn">
@@ -41,8 +43,10 @@
 					</div>
 				</div>
 				<div class = "col-xs-5">
-					<label for = "acount"><h3>＠</h3></label>
-					<input type = "text" class = "form-control input-lg" id  = "name" name = "id_woman" placeholder = "女性の TwitterID" {% if user_id_woman %} value={{user_id_woman}} {% endif%}/>
+					<div class="input-group">
+						<span class="input-group-addon input-lg">@</span>
+						<input type = "text" class = "form-control input-lg" id  = "name" name = "id_woman" placeholder = "女性の TwitterID" {% if user_id_woman %} value={{user_id_woman}} {% endif%}/>
+					</div>
 				</div>
 				</form>
 			</div>
