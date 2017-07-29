@@ -17,7 +17,7 @@ def crawl(user_id, minlength=20000):
     """user_id で指定されたアカウントのツイートをクロールします。
     user_id は先頭に '@' を含まない形式で指定してください。
 
-    :params user_id: ユーザーID
+    :params user_id: ユーザーID screen_name: そのユーザーIDの人のツイートを取得 count: 一回のスクレイピングでとって来るツイートの数 include_rts: リツイートを消す
     :result: クローリングして得られたテキストデータを足していく
     :return: ユーザーIDのクローリング結果
     """
@@ -28,7 +28,6 @@ def crawl(user_id, minlength=20000):
     if req.status_code == 200:
         for i in range(16):
             tweets = json.loads(req.text)
-            # quitprint(json.dumps(search_timeline, indent=2))
             print('get {} tweets of @{}'.format(len(tweets), user_id))
             for tweet in tweets:
                 result += tweet['text'] + "\n"
@@ -48,7 +47,6 @@ def crawl(user_id, minlength=20000):
 
 
 # こっから下は、このプログラム自体がスクリプトとして実行された場合の処理
-# ユーザーIDを聞いて、data/{user_id}.txt に結果を保存する。
 # 何も入力しないでエンターで終了
 
 def main():
