@@ -27,29 +27,24 @@
         <!--
         <div style="display:-webkit-flex;display:flex; -webkit-justify-content: center; justify-content: center; -webkit-align-items: center">
 			-->
-        <form action="/post" method="post" class="form-inline">
+        <form action="/post" method="post">
             <div class="col-xs-5">
 				<div class="input-group">
                 	<span class="input-group-addon input-lg">@</span>
                 	<input type="text" class="form-control input-lg" id="name" name="id_man" placeholder="男性の TwitterID" {% if user_id_man %} value={{user_id_man}} {% endif%}/>
 				</div>
 			</div>
-            <div class="col-xs-2">
-                <div class="container">
-                    <button type="submit" class="btn btn-default" style="border:none;margin:auto;size:80%" name="btn">
-									<img width = 100 height = 100 src = {{
-									url_for('static', filename = 'css/images/heart2.png')
-									}}/> 
-					</div>
+			<button type="submit" class="btn btn-primary btn-rounded col-xs-2 btn-lg"  name="btn">
+				診断
+			</button>
+			<div class = "col-xs-5">
+				<div class="input-group">
+					<span class="input-group-addon input-lg">@</span>
+					<input type = "text" class = "form-control input-lg" id  = "name" name = "id_woman" placeholder = "女性の TwitterID" {% if user_id_woman %} value={{user_id_woman}} {% endif%}/>
 				</div>
-				<div class = "col-xs-5">
-					<div class="input-group">
-						<span class="input-group-addon input-lg">@</span>
-						<input type = "text" class = "form-control input-lg" id  = "name" name = "id_woman" placeholder = "女性の TwitterID" {% if user_id_woman %} value={{user_id_woman}} {% endif%}/>
-					</div>
-				</div>
-				</form>
 			</div>
+		</form>
+	</div>
 		<!--
 		</div>
 		-->
