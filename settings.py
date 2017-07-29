@@ -23,3 +23,5 @@ if TWITTER_ACCESS_TOKEN == '':
 TWITTER_ACCESS_TOKEN_SECRET = os.getenv('TWITTER_ACCESS_TOKEN_SECRET', default='')
 if TWITTER_ACCESS_TOKEN_SECRET == '':
     print('please set enviroment value TWITTER_ACCESS_TOKEN_SECRET')
+
+TITLE = 'Cupid'

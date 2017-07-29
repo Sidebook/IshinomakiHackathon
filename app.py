@@ -1,11 +1,30 @@
-from flask import Flask
 from argparse import ArgumentParser
+from flask import Flask, render_template, request, redirect, url_for
+import numpy as np
+import settings
 
 app = Flask(__name__)
 
+def picked_up():
+    messages = [
+        "こんにちは，あなたの名前を入力してください",
+        "やあ！お名前はなんですか？",
+        "あなたの名前を教えてね"
+    ]
+    return np.random.choice(messages)
+
 @app.route('/', methods=['GET'])
 def index():
-    return 'Hello World'
+    message = picked_up()
+    return render_template("index.html",message=message,title=settings.TITLE)
+
+@app.route('/post',methods=['GET','POST'])
+def post():
+    if request.method =="POST":
+        name = request.form['name']
+        return render_template('index.html',name=name,title=settings.TITLE)
+    else:
+        return redirect(url_for('index'))
 
 if __name__ == "__main__":
     arg_parser = ArgumentParser(

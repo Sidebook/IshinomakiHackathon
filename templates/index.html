@@ -9,7 +9,7 @@
                     {% if name %} こんにちは {{ name }} さん {% else %} {{ message }} {% endif %}
                 </p>
                 <form action="/post" method="post" class="form-inline">
-                    <label for="name">名前</label>
+                    <label for="name">ID</label>
                     <input type="text" class="form-control" id="name" name="name" placeholder="Name">
                     <button type="submit" class="btn btn-default">送信する</button>
                 </form>
@@ -17,3 +17,4 @@
         </div>
     </div>
 </div>
+{% endblock %}
