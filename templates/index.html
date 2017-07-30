@@ -7,6 +7,12 @@
 
 <div class="container">
     <div class="row">
+		{% if error %}
+        <div class="alert alert-danger" role="alert">
+            エラー: {{ error_message }}
+        </div>
+        {% endif %}
+		
 		{% if not profiled %}
 		<div class="col-xs-12" style="text-align:center">
 			<h1>気になるあの人との相性をこっそり確かめよう！</h1>
@@ -15,12 +21,6 @@
 			</p>
 		</div>
 		{% endif %}
-		<span>
-        {% if error %}
-        <div class="alert alert-danger" role="alert">
-            エラー: {{ error_message }}
-        </div>
-        {% endif %}
         <!--
         <div style="display:-webkit-flex;display:flex; -webkit-justify-content: center; justify-content: center; -webkit-align-items: center">
 			-->
