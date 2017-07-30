@@ -115,7 +115,19 @@ def post():
                 user_id_man=man,
                 user_id_woman=woman,
                 comment=comment,
-                compatible_level=compatible_level
+                compatible_level=compatible_level,
+                tooltip={
+                    '知的好奇心':'落ち着きがあり，美に敏感で新しいことを試そうとするタイプ',
+                    '誠実性':'自己統制をし、誠実、あるいは外部の期待や評価に応えようとするタイプ',
+                    '外向性':'よりエネルギッシュで，社交的なタイプ',
+                    '協調性':'他人とうまくやっていくことを重要視するタイプ',
+                    '感情起伏':'感情の幅に大きな動きがあるタイプ',
+                    '自己増進':'社会的な基準に基づく個人的な成功',
+                    '自己超越':'身の回りの人をより幸せにしようとする',
+                    '現状維持':'伝統を重んじる保守的な姿勢',
+                    '変化許容性':'日常生活において興奮や新規性を追い求める',
+                    '快楽主義':'自分自身の幸福や満足感'
+                }
             )
         else:
             return render_template(HOME_HTML,
@@ -125,7 +137,7 @@ def post():
             user_id_man=man,
             user_id_woman=woman)
     else:
-        return redirect(url_for(HOME_HTML))
+        return redirect(url_for('index'))
 
 if __name__ == "__main__":
     arg_parser = ArgumentParser(

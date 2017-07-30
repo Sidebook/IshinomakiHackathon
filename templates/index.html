@@ -74,7 +74,9 @@
 							<tr>
 								<th>
 									<div class="text-center">
+									<a href="{{ ''.join(['https://twitter.com/', user_id_man])}}" target="_blank">
 									<h2 style="font-weight:bold">@{{ user_id_man }}</h2>
+									</a>
 									</div>
 								</th>
 								<th>
@@ -84,7 +86,9 @@
 								</th>
 								<th>
 									<div class="text-center">
+									<a href="{{ ''.join(['https://twitter.com/', user_id_woman])}}" target="_blank">
 									<h2 style="font-weight:bold">@{{ user_id_woman }}</h2>
+									</a>
 									</div>
 								</th>
 							</tr>
@@ -99,7 +103,8 @@
 									</td>
 									<th class="col-xs-4">
 										<div class="text-center">
-											<h3>{{ p.name }}</h3>
+											<h3 {% if tooltip %} data-toggle="tooltip" data-placement="top" title={{ tooltip[p.name] }} {% endif %}>
+												{{ p.name }}</h3>
 										</div>
 									</th>
 									<td class="col-xs-4">
@@ -128,7 +133,8 @@
 								<tr>
 									<td class="col-xs-4">
 										<div class="text-center">
-											<h3>{{ values_man[i][0] }}</h3>
+											<h3 {% if tooltip %} data-toggle="tooltip" data-placement="top" title={{ tooltip[values_man[i][0]] }} {% endif %}>
+												{{ values_man[i][0] }}</h3>
 											<p>{{ values_man[i][1] }}</p>
 										</div>
 									</td>
@@ -139,7 +145,8 @@
 									</td>
 									<td class="col-xs-4">
 										<div class="text-center">
-											<h3>{{ values_woman[i][0] }}</h3>
+											<h3 {% if tooltip %} data-toggle="tooltip" data-placement="top" title={{ tooltip[values_woman[i][0]] }} {% endif %}>
+												{{ values_woman[i][0] }}</h3>
 											<p>{{ values_woman[i][1] }}</p>
 										</div>
 									</td>
