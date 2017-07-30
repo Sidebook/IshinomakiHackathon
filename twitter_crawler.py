@@ -37,10 +37,10 @@ def crawl(user_id, minlength=20000):
             # print(ID)
             params['max_id'] = ID - 1
             req = twitter.get(url, params = params)
+            print ('crawled {} words'.format(len(result)))
             if len(result) > minlength :
                 # print(len(result))
                 return result
-            time.sleep(1)
         return result
     elif req.status_code == 401:
         raise UnauthorizedException()
