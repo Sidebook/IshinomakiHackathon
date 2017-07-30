@@ -80,7 +80,7 @@
 									</div>
 								</th>
 								<th>
-									<h1 class="text-center"><span class="label label-default" style="">
+									<h1 class="text-center"><span class="label label-warning" style="">
 									個性
 									</span></h1>
 								</th>
@@ -96,20 +96,26 @@
 						<tbody>
 							{% for  p in personality%}
 								<tr>
-									<td class="col-xs-4">
+									<td class="col-xs-5">
 										<div class="text-center">
 											<h3>{{ p.man }}</h3>
+											<div class="progress">
+												<div class="progress-bar progress-bar-warning" role="progressbar" style="width: {{ p.man }}; float:right">
+											</div>
 										</div>
 									</td>
-									<th class="col-xs-4">
+									<th class="col-xs-2" style='vertical-align: middle;'>
 										<div class="text-center">
-											<h3 {% if tooltip %} data-toggle="tooltip" data-placement="top" title={{ tooltip[p.name] }} {% endif %}>
+											<h3 style="font-weight:bold" {% if tooltip %} data-toggle="tooltip" data-placement="top" title={{ tooltip[p.name] }} {% endif %}>
 												{{ p.name }}</h3>
 										</div>
 									</th>
-									<td class="col-xs-4">
+									<td class="col-xs-5">
 										<div class="text-center">
 											<h3>{{ p.woman }}</h3>
+											<div class="progress">
+												<div class="progress-bar progress-bar-warning" role="progressbar" style="width: {{ p.woman }};">
+											</div>
 										</div>
 									</td>
 								</tr>
@@ -122,7 +128,7 @@
 						<thead>
 							<th></th>
 							<th>
-								<h1 class="text-center"><span class="label label-default" style="">
+								<h1 class="text-center"><span class="label label-default label-info" style="">
 									価値
 								</span></h1>
 							</th>
@@ -131,23 +137,31 @@
 						<tbody>
 							{% for i in range(values_man|length) %}
 								<tr>
-									<td class="col-xs-4">
+									<td class="col-xs-5">
 										<div class="text-center">
 											<h3 {% if tooltip %} data-toggle="tooltip" data-placement="top" title={{ tooltip[values_man[i][0]] }} {% endif %}>
 												{{ values_man[i][0] }}</h3>
-											<p>{{ values_man[i][1] }}</p>
+											<div class="progress">
+												<div class="progress-bar progress-bar-info" role="progressbar" style="width: {{ values_man[i][1] }}; float:right">
+													{{ values_man[i][1] }}
+												</div>
+											</div>
 										</div>
 									</td>
-									<td class="col-xs-4">
+									<td class="col-xs-2" style='vertical-align: middle;'>
 										<div class="text-center">
 											<h3 style="font-weight:bold">{{i + 1}}位</h3>
 										</div>
 									</td>
-									<td class="col-xs-4">
+									<td class="col-xs-5">
 										<div class="text-center">
 											<h3 {% if tooltip %} data-toggle="tooltip" data-placement="top" title={{ tooltip[values_woman[i][0]] }} {% endif %}>
 												{{ values_woman[i][0] }}</h3>
-											<p>{{ values_woman[i][1] }}</p>
+											<div class="progress">
+												<div class="progress-bar progress-bar-info" role="progressbar" style="width: {{ values_woman[i][1] }};">
+													{{ values_woman[i][1] }}
+												</div>
+											</div>
 										</div>
 									</td>
 								</tr>
@@ -162,8 +176,12 @@
 				</div>
 				<div class="panel-body">
 					<div class="col-md-6">
-					<h3 class="text-center" style="font-weight:bold">個性</h3>
-						<p class="text-center">その人の性格を表す５大要素</p>
+					<h1 class="text-center"><span class="label label-default label-warning" style="">
+									個性
+								</span></h1>
+							<br>
+						<h4 class="text-center">その人の性格を表す５大要素</h4>
+						<br>
 						<dl class="dl-horizontal">
 							<dt>知的好奇心</dt>
 								<dd>落ち着きがあり，美に敏感で新しいことを試そうとするタイプ</dd>
@@ -178,8 +196,12 @@
 						</dl>
 					</div>
 					<div class="col-md-6">
-						<h3 class="text-center" style="font-weight:bold">価値</h3>
-						<p class="text-center">意思決定を行う時に影響を及ぼす動機付けとなる要因</p>
+						<h1 class="text-center"><span class="label label-default label-info" style="">
+									価値
+								</span></h1>
+						<br>
+						<h4 class="text-center">意思決定を行う時に影響を及ぼす動機付けとなる要因</h4>
+						<br>
 						<dl class="dl-horizontal">
 							<dt>自己増進</dt>
 								<dd>社会的な基準に基づく個人的な成功</dd>

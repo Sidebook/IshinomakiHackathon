@@ -73,14 +73,14 @@ def post():
         if profiled:
             personality = []
             for k, v in profile_man.personality.items():
-                man_p = '{0:.1f}%'.format(v * 100)
-                woman_p = '{0:.1f}%'.format(profile_woman.personality[k] * 100)
+                man_p = '{0:.0f}%'.format(v * 100)
+                woman_p = '{0:.0f}%'.format(profile_woman.personality[k] * 100)
                 personality.append({'name': k, 'man': man_p, 'woman': woman_p})
             
             values_man = sorted(profile_man.values.items(), key=lambda x:x[1], reverse=True)
             values_woman = sorted(profile_woman.values.items(), key=lambda x:x[1], reverse=True)
-            values_man = [(v[0], '{0:.1f}%'.format(v[1] * 100)) for v in values_man]
-            values_woman = [(v[0], '{0:.1f}%'.format(v[1] * 100)) for v in values_woman]
+            values_man = [(v[0], '{0:.0f}%'.format(v[1] * 100)) for v in values_man]
+            values_woman = [(v[0], '{0:.0f}%'.format(v[1] * 100)) for v in values_woman]
 
             compatible_level = 0
             comment = ''
